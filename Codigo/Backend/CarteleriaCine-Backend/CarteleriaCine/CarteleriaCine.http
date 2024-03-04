@@ -1,0 +1,6 @@
+@CarteleriaCine_HostAddress = http://localhost:5089
+
+GET {{CarteleriaCine_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

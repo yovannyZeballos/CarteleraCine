@@ -1,0 +1,76 @@
+<div class="container d-flex align-items-center justify-content-center mt-5">
+    <div class="card">
+        <div class="card-header">
+            <h4 class="text-secondary">Reserva</h4>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="reservar()">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="nombres" class="form-label">Nombres</label>
+                        <input type="text" [formControl]="nombres" class="form-control" id="nombres" formControlName="nombres">
+                    </div>
+                
+                    <div class="col-md-3">
+                        <label for="apellidoPaterno" class="form-label">Apellido Paterno</label>
+                        <input type="text" class="form-control" id="apellidoPaterno" formControlName="apellidoPaterno">
+                    </div>
+                
+                    <div class="col-md-3">
+                        <label for="apellidoMaterno" class="form-label">Apellido Materno</label>
+                        <input type="text" class="form-control" id="apellidoMaterno" formControlName="apellidoMaterno">
+                    </div>
+                
+                    <div class="col-md-3">
+                        <label for="fechaNacimiento" class="form-label">Fecha Nacimiento</label>
+                        <input type="date" class="form-control" id="fechaNacimiento" formControlName="fechaNacimiento">
+                    </div>
+                
+                    <div class="col-md-3">
+                        <label for="genero" class="form-label">Genero</label>
+                        <select class="form-select" formControlName="genero">
+                            <option selected>Seleccione una opción</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                          </select>
+                    </div>
+                
+                    <div class="col-md-3">
+                        <label for="tipoDocumento" class="form-label">Tipo documento</label>
+                        <select class="form-select" formControlName="tipoDocumento">
+                            <option selected>Seleccione una opción</option>
+                            <option value="1">DNI</option>
+                            <option value="2">RUC</option>
+                          </select>
+                    </div>
+                
+                    <div class="col-md-3">
+                        <label for="numeroDocumento" class="form-label">Numero de documento</label>
+                        <input type="text" class="form-control" id="numeroDocumento" formControlName="numeroDocumento">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mt-4">
+                        <button 
+                        class="btn btn-primary"
+                        [disabled]="!form.valid">Reservar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+  
+</div>
+
+
+<div class="container d-flex align-items-center justify-content-center" *ngIf="numeroTicket > 0">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="text-secondary">Reserva exitosa, Numero ticket: {{numeroTicket}}</h4>
+        </div>
+    </div>
+</div>
+
+
+
+
