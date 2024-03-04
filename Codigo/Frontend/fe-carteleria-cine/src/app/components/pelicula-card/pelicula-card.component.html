@@ -1,0 +1,17 @@
+<div class="card" style="width: 18rem;">
+    <img src="{{ pelicula.urlImagen }}" class="card-img-top" alt="{{ pelicula.titulo }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ pelicula.titulo }} <span class="badge bg-secondary"> {{pelicula.genero}}</span></h5>
+      <p class="card-text">{{ pelicula.sinopsis }}</p>
+      
+      <div>
+        <span *ngFor="let horario of pelicula.horarios" class="badge bg-success m-1"> 
+          {{horario.horaInicio}}
+        </span>
+      </div>
+
+      <p class="card-text">Duracion: <span class="badge bg-primary"> {{pelicula.duracion}}</span> minutos</p>
+
+      <a [routerLink]="['/pages/pelicula', pelicula.id]">Ver detalles</a>
+    </div>
+  </div>
