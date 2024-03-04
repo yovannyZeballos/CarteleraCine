@@ -2,9 +2,9 @@
 {
 	public class PeliculaRequest
 	{
-		public int IdSala { get; set; }
+		public int NumeroSala { get; set; }
 		public string Titulo { get; set; } = "";
-		public int IdGenero { get; set; }
-		public string? HoraInicio { get; set; } = "";
+		public string Genero { get; set; } = "";
+		public string HoraInicio { get; set; } = "";
 	}
 }

@@ -3,7 +3,20 @@ using CarteleriaCine.Business.Impl;
 using CarteleriaCine.Repository;
 using Microsoft.EntityFrameworkCore;
 
+var Origins = "_origins";
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddCors(options =>
+{
+	options.AddPolicy(name: Origins,
+					  policy =>
+					  {
+						  policy.WithOrigins("http://localhost:4200")
+						  .AllowAnyHeader()
+						  .AllowAnyMethod();
+					  });
+});
 
 // Add services to the container.
 
@@ -27,6 +40,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(Origins);
 
 app.UseAuthorization();
 

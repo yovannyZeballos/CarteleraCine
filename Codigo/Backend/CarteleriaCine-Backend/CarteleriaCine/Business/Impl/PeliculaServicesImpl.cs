@@ -15,9 +15,9 @@ namespace CarteleriaCine.Business.Impl
 				.Include(p => p.HorariosPelicula.Where(h => h.HoraInicio.Contains(request.HoraInicio)))
 				.ThenInclude(h => h.Sala)
 				.Include(p => p.Genero)
-				.Where(p => (request.IdSala == 0 || (request.IdSala > 0 && p.HorariosPelicula.Any(x => x.Sala.Id == request.IdSala)))
+				.Where(p => (request.NumeroSala == 0 || (request.NumeroSala > 0 && p.HorariosPelicula.Any(x => x.Sala.Numero == request.NumeroSala)))
 						   && (request.Titulo == "" || (request.Titulo != "" && p.Titulo.Contains(request.Titulo)))
-						   && (request.IdGenero == 0 || (request.IdGenero > 0 && p.Genero.Id == request.IdGenero))
+						   && (request.Genero == "" || (request.Genero != "" && p.Genero.Descripcion.Contains(request.Genero)))
 						   && (request.HoraInicio == "" || (request.HoraInicio != "" && p.HorariosPelicula.Any(x => x.HoraInicio == request.HoraInicio))))
 				.Select(p => new PeliculaResponse
 				{
@@ -56,6 +56,7 @@ namespace CarteleriaCine.Business.Impl
 						EntradasDisponibles = h.Sala.EntradasDisponibles,
 						Horario = new HorariosResponse
 						{
+							Id = h.Id,
 							HoraInicio = h.HoraInicio,
 							HoraFin = h.HoraFin
 						}
